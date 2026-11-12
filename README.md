@@ -10,9 +10,9 @@
       --pink-start: #FCE8E6;      /* สีชมพูพาสเทลนุ่มนวล */
       --green-end: #E4EBE2;       /* สีเขียวอ่อนพาสเทล (อิงตาม Dingley) */
       --card-bg: #FFFFFF;         /* สีพื้นหลังการ์ดขาวสะอาด */
-      --primary-text: #354231;    /* สีเขียวเข้ม (Kombu Green) สำหรับข้อความ */
+      --primary-text: #6A784D;    /* สีเขียวเข้ม (Kombu Green) สำหรับข้อความ */
       --secondary-text: #C08267;  /* สีส้มอิฐ/ชมพูเข้ม (Pale Copper) */
-      --border-color: #E8E2D9;    /* เส้นขอบการ์ดบางๆ */
+      --border-color: #3A3D32;    /* เส้นขอบการ์ดบางๆ */
       --btn-bg: #5C7859;          /* สีปุ่มกด (Dingley) */
       --btn-hover: #354231;
     }
