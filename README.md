@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>สุขสันต์วันครบรอบ</title>
   <style>
-    /* กำหนดตัวแปรสีให้สว่าง อ่อนหวาน และละมุนยิ่งขึ้น */
+    /* กำหนดตัวแปรสีไล่โทนจากชมพูไปเขียวอ่อน */
     :root {
-      --bg-body: #F4EFEA;         /* สีพื้นหลังภายนอกอ่อนๆ */
-      --card-bg: #FCF9F5;         /* สีพื้นหลังการ์ดโทนสว่างนุ่มนวล */
-      --primary-text: #4A5D4E;    /* สีเขียวเข้มสบายตา */
-      --secondary-text: #C47B5E;  /* สีส้มอิฐพาสเทลอ่อน */
-      --border-color: #E6D8C8;    /* สีเส้นขอบครีมอ่อน */
-      --btn-bg: #78937A;          /* สีปุ่มกด */
-      --btn-hover: #5A735C;
+      --pink-start: #FCE8E6;      /* สีชมพูพาสเทลนุ่มนวล */
+      --green-end: #E4EBE2;       /* สีเขียวอ่อนพาสเทล (อิงตาม Dingley) */
+      --card-bg: #FFFFFF;         /* สีพื้นหลังการ์ดขาวสะอาด */
+      --primary-text: #354231;    /* สีเขียวเข้ม (Kombu Green) สำหรับข้อความ */
+      --secondary-text: #C08267;  /* สีส้มอิฐ/ชมพูเข้ม (Pale Copper) */
+      --border-color: #E8E2D9;    /* เส้นขอบการ์ดบางๆ */
+      --btn-bg: #5C7859;          /* สีปุ่มกด (Dingley) */
+      --btn-hover: #354231;
     }
 
     * {
@@ -23,8 +24,9 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
+    /* จัดทุกอย่างให้อยู่ตรงกลางหน้าจอแบบสมบูรณ์ + พื้นหลังไล่สี */
     body {
-      background-color: var(--bg-body);
+      background: linear-gradient(135deg, var(--pink-start) 0%, var(--green-end) 100%);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -36,12 +38,27 @@
     .card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 450px;
+      max-width: 420px;
       padding: 50px 30px;
       border-radius: 24px;
       border: 1px solid var(--border-color);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+      
+      /* จัดเนื้อหาภายในให้อยู่ตรงกลางทั้งหมด */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+    }
+
+    /* หน้าจอแต่ละหน้า */
+    .screen {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     /* ข้อความหัวข้อ */
@@ -49,7 +66,6 @@
       font-size: 26px;
       font-weight: 700;
       color: var(--primary-text);
-      margin-bottom: 20px;
       line-height: 1.4;
     }
 
@@ -57,17 +73,20 @@
       font-size: 22px;
       color: var(--secondary-text);
       font-weight: 600;
-      margin-top: 10px;
+      margin-top: 12px;
     }
 
     /* ช่องกรอกรหัสผ่าน */
     .input-group {
       margin: 30px 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
     }
 
     .passcode-input {
       width: 100%;
-      max-width: 220px;
+      max-width: 200px;
       padding: 12px;
       text-align: center;
       font-size: 24px;
@@ -75,13 +94,14 @@
       border: 1.5px solid var(--border-color);
       border-radius: 12px;
       outline: none;
-      background-color: #ffffff;
+      background-color: #FAFAFA;
       color: var(--primary-text);
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
 
     .passcode-input:focus {
       border-color: var(--btn-bg);
+      background-color: #FFFFFF;
     }
 
     /* ปุ่มกด */
@@ -95,7 +115,7 @@
       letter-spacing: 1px;
       border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(120, 147, 122, 0.25);
+      box-shadow: 0 4px 12px rgba(92, 120, 89, 0.25);
       transition: all 0.2s ease;
     }
 
@@ -112,7 +132,6 @@
     .content-screen {
       display: none;
       animation: fadeIn 0.8s ease-in-out;
-      padding: 20px 0;
     }
 
     @keyframes fadeIn {
@@ -125,7 +144,7 @@
 
   <div class="card">
     <!-- 1. หน้ากรอกรหัสผ่าน -->
-    <div id="passcode-screen">
+    <div id="passcode-screen" class="screen">
       <div class="title">สุขสันต์วันครบรอบ</div>
       <div class="input-group">
         <input 
@@ -140,9 +159,10 @@
     </div>
 
     <!-- 2. หน้าแสดงผลหลังกรอกรหัสผ่านถูกต้อง (140224) -->
-    <div id="flower-screen" class="content-screen">
+    <div id="flower-screen" class="screen content-screen">
       <div class="title">สุขสันต์วันครบรอบนะ เรน</div>
       <div class="subtitle">รักมากๆ นะ</div>
+      <div class="subtitle">รักเรนที่สุดในโลกเลย ขอบคุณสำหรับทุกอย่างเลยนะเรน มิวรักเรน</div>
     </div>
   </div>
 
@@ -154,7 +174,7 @@
 
       if (input === correctPasscode) {
         document.getElementById('passcode-screen').style.display = 'none';
-        document.getElementById('flower-screen').style.display = 'block';
+        document.getElementById('flower-screen').style.display = 'flex';
       } else {
         alert("รหัสผ่านไม่ถูกต้อง ลองใหม่อีกครั้งนะ ♡");
       }
@@ -162,4 +182,4 @@
   </script>
 
 </body>
-</html># Aniversary-2-Years-9-Months-3R
+</html>
