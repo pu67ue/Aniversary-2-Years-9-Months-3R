@@ -26,9 +26,6 @@
 
     /* จัดทุกอย่างให้อยู่ตรงกลางหน้าจอแบบสมบูรณ์ + พื้นหลังไล่สี */
     body {
-          body {
-      /* เพิ่ม SVG รูปหัวใจลางๆ ซ้อนบนพื้นหลังไล่สีเดิม */
-      background: 
          background: linear-gradient(135deg, var(--pink-start) 0%, var(--green-end) 100%);
       display: flex;
       justify-content: center;
